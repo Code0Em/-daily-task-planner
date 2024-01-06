@@ -26,7 +26,8 @@ header {
   white-space: pre-wrap;
 }
 
-.time-block {
+/*Renamed this class*/
+.task {
   text-align: center;
   border-radius: 15px;
 }
