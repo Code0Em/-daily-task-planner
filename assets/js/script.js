@@ -26,6 +26,9 @@ $(document).ready(function () {
 
     // TASK 2: Creates the calendar.
     function createCal() {
+        // Gets today's date, using Dayjs (for use in second function below).
+        const today = dayjs()
+
         // Creates the rows for 9am to 5pm (i.e. nine section elements).
         for (i = 0; i < 9; i++) {
             // Creates one row on each iteration (i.e. creates a section element). Gives it a class of row (which adds CSS) and appends it to the section element (with the class of container).
@@ -48,6 +51,18 @@ $(document).ready(function () {
         const saveBtns = $("button").filter(".col-2");
         // Adds a class of saveBtn to the above button elements (which adds CSS).
         saveBtns.addClass("saveBtn");
+
+        // Sets text of 'hour blocks' (9am to 5pm), and adds id tags to all the 'task fields'.
+        for (j = 0; j < 9; j++) {
+            // Sets the calendar start time to 9am, using Dayjs' set() method.
+            const startTime = today.set('h', 9)
+            // Adds the index (j) to the above time (so the hour increases on each iteration), using Dayjs' add() method.
+            const nextTime = startTime.add(j, 'h')
+            // Sets the text of each 'hour block', by targeting each index (j) on each iteration and setting it the nextTime variable. Formats to 9am, using Dayjs' format() method.
+            $(".hour").eq(j).text(nextTime.format("h A"));
+            // Adds an id to each 'task field'. Sets it to "hour" plus the number of the hour (e.g. 9am = hour9).
+            $(".task").eq(j).attr('id', `hour${nextTime.format("H")}`);
+        }
     }
 
     // **FUNCTION CALLS AND EVENT LISTENERS**
