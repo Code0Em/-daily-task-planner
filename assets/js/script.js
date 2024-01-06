@@ -10,3 +10,19 @@
 // TASK 5: Create a function which checks for any stored tasks in the browser and (if there are any) displays these in the correct input field (i.e. the field they were originally inputted to).
 
 // TASK 6: Create a function which clears any stored tasks in the browser and (if there are any) removes these from the page when the user selects the clear button.
+
+// **FUNCTIONS**
+// Runs all other code as soon as DOM is safe to manipulate.
+$(document).ready(function () {
+
+    // TASK 1: Displays today's date in the header element, using setInterval method.
+    setInterval(function () {
+        // Gets today's date, using Dayjs.
+        const today = dayjs();
+        // Sets text of p element (with id of currentDay) to today's date, using Dayjs' format method.
+        $("#currentDay").text(today.format("dddd DD MMMM YYYY (hh:mm:ss a)"));
+        // Calls this function to be run every second.
+    }, 1000);
+
+    // KEEP ALL OTHER CODE ABOVE THIS (FROM .READY)
+})
