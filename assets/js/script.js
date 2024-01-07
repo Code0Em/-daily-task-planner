@@ -26,7 +26,7 @@ $(document).ready(function () {
 
     // TASK 2: Creates the calendar.
     function createCal() {
-        // Gets today's date, using Dayjs (for use in second function below).
+        // Gets today's date, using Dayjs (for use in forLoop below).
         const today = dayjs()
 
         // Creates the rows for 9am to 5pm (i.e. nine section elements).
@@ -62,6 +62,25 @@ $(document).ready(function () {
             $(".hour").eq(j).text(nextTime.format("h A"));
             // Adds an id to each 'task field'. Sets it to "hour" plus the number of the hour (e.g. 9am = hour9).
             $(".task").eq(j).attr('id', `hour${nextTime.format("H")}`);
+
+            // TASK 3: Sets colour of 'task fields' to match the current time.
+            // Checks if the 'hour block' (i.e. nextTime variable) is before the current time using Dayjs' isBefore method.
+            before = nextTime.isBefore(today);
+            // Calculates the difference in hours between the 'hour block' and the current time, using Dayjs' diff method.
+            nowDiff = nextTime.diff(today, "h");
+            // If the 'hour block' is before the current time, runs this codeblock.
+            if (before == true) {
+                // Adds the class of past (which adds CSS) to the 'task field'.
+                $(".task").eq(j).addClass("past");
+                // If the difference between the 'hour block' and the current time is zero (i.e. the same hour), runs this codeblock.
+            } else if (nowDiff == 0) {
+                // Adds the class of present.
+                $(".task").eq(j).addClass("present");
+                // If the 'hour block' is after the current time, runs this codeblock.
+            } else if (before !== true) {
+                // Adds the class of future.
+                $(".task").eq(j).addClass("future");
+            }
         }
     }
 
