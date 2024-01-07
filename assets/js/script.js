@@ -58,7 +58,7 @@ $(document).ready(function () {
             const startTime = today.set('h', 9)
             // Adds the index (j) to the above time (so the hour increases on each iteration), using Dayjs' add() method.
             const nextTime = startTime.add(j, 'h')
-            // Sets the text of each 'hour block', by targeting each index (j) on each iteration and setting it the nextTime variable. Formats to 9am, using Dayjs' format() method.
+            // Sets the text of each 'hour block', by targeting each index (j) on each iteration and setting it the nextTime variable. Formats time (e.g. 9am), using Dayjs' format() method.
             $(".hour").eq(j).text(nextTime.format("h A"));
             // Adds an id to each 'task field'. Sets it to "hour" plus the number of the hour (e.g. 9am = hour9).
             $(".task").eq(j).attr('id', `hour${nextTime.format("H")}`);
