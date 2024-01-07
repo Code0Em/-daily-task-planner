@@ -1,3 +1,5 @@
+/*Note: Comments added to explain updates made to starter code only.*/
+
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
@@ -70,7 +72,8 @@ header {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  background-color: #06aed5;
+  /*Changed colour of save buttons*/
+  background-color: #73abb2;
   color: white;
 }
 

@@ -121,9 +121,17 @@ $(document).ready(function () {
             return;
             // If the 'task field' isn't emplty, run this codeblock:
         } else {
-            // Save the task to the broswer, setting the key name to match the id of the 'task field' (e.g. for task inputted into 'task field' adjacent to 9am 'hour block', task will be saved with key name "hour9")
+            // Save the task to the broswer, setting the key name to match the id of the 'task field' (e.g. for task inputted into 'task field' adjacent to 9am 'hour block', task will be saved with key name "hour9").
             localStorage.setItem(`${getTask.id}`, JSON.stringify(userTask));
         }
+    });
+
+    // TASK 6: Listens for a click event on the clear button (by tagetting its index) and calls function.
+    $("button").eq(0).on("click", function () {
+        // Clears the existing tasks from the browser, using clear method.
+        localStorage.clear();
+        // No longer displays the stored tasks on the page (i.e. sets the value of all 'task fields' to an empty string).
+        $("input").val("");
     });
 
     // KEEP ALL OTHER CODE ABOVE THIS (FROM .READY)
