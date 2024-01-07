@@ -82,6 +82,25 @@ $(document).ready(function () {
                 $(".task").eq(j).addClass("future");
             }
         }
+        // TASK 5: Calls the function to check for any stored tasks and displays them.
+        checkSavedTasks();
+    }
+
+    // TASK 5: Checks for any stored tasks in the browser.
+    function checkSavedTasks() {
+        for (j = 0; j < 9; j++) {
+            // Sets the keyName as "hour" plus 9 plus the index (j). So on first iteration this would be "hour9" (i.e. 9+0) (n.b. keypairs are named as "hour9: task", so this would return any '9am task' etc).
+            let keyName = "hour" + (9 + j);
+            // Sets the id name as above. So on first iteration this would be "#hour9" (i.e. the 'task field' with the id of #hour9 etc).
+            let idName = "#hour" + (9 + j);
+            // If there's a task with this keyName (i.e. it isn't null), run this codeblock.
+            if (localStorage.getItem(`${keyName}`) !== null) {
+                // Get the task from the browser.
+                const savedTasks = JSON.parse(localStorage.getItem(`${keyName}`));
+                // Displays the task in the correct 'task field' (i.e. sets the value of the 'task field' with the matching id tag)
+                $(`${idName}`).val(savedTasks);
+            }
+        }
     }
 
     // **FUNCTION CALLS AND EVENT LISTENERS**
@@ -89,23 +108,23 @@ $(document).ready(function () {
     createCal();
 
     // TASK 4: Listens for a click event on the save buttons (using event delegation) and calls function.   
-$(".container").on("click", '.saveBtn', function (e) {
-    // Prevents the default behaviour (i.e. reloading the page).
-    e.preventDefault();
-    // Gets the 'task field' adjacent to the button that was clicked (i.e. the sibling element that's before the button).
-    const getTask = this.previousSibling;
-    // Gets what the user's inputted into the 'task field' (i.e. the value of input element).
-    const userTask = getTask.value;
-    // Validates the 'task field' by checking it's not empty (i.e. if the length of the value is zero, run this codeblock).
-    if (getTask.value.length == 0) {
-        // Gets us out of the function (i.e. returns nothing).
-        return;
-        // If the 'task field' isn't emplty, run this codeblock:
-    } else {
-        // Save the task to the broswer, setting the key name to match the id of the 'task field' (e.g. for task inputted into 'task field' adjacent to 9am 'hour block', task will be saved with key name "hour9")
-        localStorage.setItem(`${getTask.id}`, JSON.stringify(userTask));
-    }
-});
+    $(".container").on("click", '.saveBtn', function (e) {
+        // Prevents the default behaviour (i.e. reloading the page).
+        e.preventDefault();
+        // Gets the 'task field' adjacent to the button that was clicked (i.e. the sibling element that's before the button).
+        const getTask = this.previousSibling;
+        // Gets what the user's inputted into the 'task field' (i.e. the value of input element).
+        const userTask = getTask.value;
+        // Validates the 'task field' by checking it's not empty (i.e. if the length of the value is zero, run this codeblock).
+        if (getTask.value.length == 0) {
+            // Gets us out of the function (i.e. returns nothing).
+            return;
+            // If the 'task field' isn't emplty, run this codeblock:
+        } else {
+            // Save the task to the broswer, setting the key name to match the id of the 'task field' (e.g. for task inputted into 'task field' adjacent to 9am 'hour block', task will be saved with key name "hour9")
+            localStorage.setItem(`${getTask.id}`, JSON.stringify(userTask));
+        }
+    });
 
     // KEEP ALL OTHER CODE ABOVE THIS (FROM .READY)
 })
