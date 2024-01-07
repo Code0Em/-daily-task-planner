@@ -24,7 +24,7 @@ N/A
 
 ## Usage
 
-Users navigate to the webpage via the URL ([Daily Task Planner](ADD LINK WHEN DEPLOYED). When on the page, the header displays: the title, a brief description of the application, the current date and time, and a clear button. Beneath this, a calendar (made up of hourly blocks) is displayed. For each hourly block, an input field (for the user’s task) is displayed, as well as a corresponding save button.
+Users navigate to the webpage via the URL ([Daily Task Planner](https://code0em.github.io/daily-task-planner/)). When on the page, the header displays: the title, a brief description of the application, the current date and time, and a clear button. Beneath this, a calendar (made up of hourly blocks) is displayed. For each hourly block, an input field (for the user’s task) is displayed, as well as a corresponding save button.
 
 When the user enters a task into the input field, the task is displayed on the calendar. Upon selecting the save button, the user’s task is saved to the browser and, subsequently, continues to be displayed between page refreshes.
 
