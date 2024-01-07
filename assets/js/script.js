@@ -27,7 +27,7 @@ $(document).ready(function () {
     // TASK 2: Creates the calendar.
     function createCal() {
         // Gets today's date, using Dayjs (for use in forLoop below).
-        const today = dayjs()
+        const today = dayjs();
 
         // Creates the rows for 9am to 5pm (i.e. nine section elements).
         for (i = 0; i < 9; i++) {
