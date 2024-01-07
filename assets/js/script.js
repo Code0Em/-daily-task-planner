@@ -93,6 +93,7 @@ $(document).ready(function () {
             let keyName = "hour" + (9 + j);
             // Sets the id name as above. So on first iteration this would be "#hour9" (i.e. the 'task field' with the id of #hour9 etc).
             let idName = "#hour" + (9 + j);
+            // *CREDIT: Argument for if statement adapted from Xpert Learning Assistant’s (2024) answer to “how to check if keys have been stored in localStorage”.
             // If there's a task with this keyName (i.e. it isn't null), run this codeblock.
             if (localStorage.getItem(`${keyName}`) !== null) {
                 // Get the task from the browser.
@@ -134,5 +135,15 @@ $(document).ready(function () {
         $("input").val("");
     });
 
-    // KEEP ALL OTHER CODE ABOVE THIS (FROM .READY)
-})
+});
+
+//**CREDITS**
+// The following sources built upon the coder’s existing knowledge of the methods cited/used throughout the build:
+
+// HubSpot Blog (2023) 11 Ways to Center a Div or Text in a Div in CSS (https://blog.hubspot.com/website/center-div-css).
+
+// MDN Web Docs (2023) Element: previousElementSibling property (https://developer.mozilla.org/en-US/docs/Web/API/Element/previousElementSibling).
+
+// W3Schools (no date) HTML Emojis (https://www.w3schools.com/html/html_emojis.asp).
+
+// Xpert Learning Assistant (2024) (accessed via Virtual Learning Environment).
