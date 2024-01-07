@@ -88,5 +88,24 @@ $(document).ready(function () {
     // TASK 2: Calls the function to display calendar.
     createCal();
 
+    // TASK 4: Listens for a click event on the save buttons (using event delegation) and calls function.   
+$(".container").on("click", '.saveBtn', function (e) {
+    // Prevents the default behaviour (i.e. reloading the page).
+    e.preventDefault();
+    // Gets the 'task field' adjacent to the button that was clicked (i.e. the sibling element that's before the button).
+    const getTask = this.previousSibling;
+    // Gets what the user's inputted into the 'task field' (i.e. the value of input element).
+    const userTask = getTask.value;
+    // Validates the 'task field' by checking it's not empty (i.e. if the length of the value is zero, run this codeblock).
+    if (getTask.value.length == 0) {
+        // Gets us out of the function (i.e. returns nothing).
+        return;
+        // If the 'task field' isn't emplty, run this codeblock:
+    } else {
+        // Save the task to the broswer, setting the key name to match the id of the 'task field' (e.g. for task inputted into 'task field' adjacent to 9am 'hour block', task will be saved with key name "hour9")
+        localStorage.setItem(`${getTask.id}`, JSON.stringify(userTask));
+    }
+});
+
     // KEEP ALL OTHER CODE ABOVE THIS (FROM .READY)
 })
